@@ -2,6 +2,7 @@
   "name": "styled-funcs",
   "description": "Set of utility functions for working with styled components",
   "license": "MIT",
+  "version": "1.0.0",
   "source": "src/index.js",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
