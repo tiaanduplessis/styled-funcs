@@ -1,0 +1,37 @@
+{
+  "name": "styled-funcs",
+  "description": "Set of utility functions for working with styled components",
+  "license": "MIT",
+  "source": "src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "unpkg": "dist/index.umd.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "standard --fix",
+    "build": "microbundle",
+    "dev": "microbundle watch"
+  },
+  "peerDependencies": {
+    "styled-components": "^4.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0",
+    "microbundle": "^0.11.0",
+    "react": "^16.9.0",
+    "standard": "^14.0.2",
+    "styled-components": "^4.3.2"
+  },
+  "standard": {
+    "ignore": [
+      "dist",
+      "example.js"
+    ],
+    "env": {
+      "jest": true
+    }
+  }
+}
