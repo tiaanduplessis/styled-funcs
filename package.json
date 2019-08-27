@@ -17,14 +17,14 @@
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "babel-jest": "^24.9.0",
-    "jest": "^24.9.0",
-    "microbundle": "^0.11.0",
-    "react": "^16.9.0",
-    "standard": "^14.0.2",
-    "styled-components": "^4.3.2"
+    "@babel/core": "7.5.5",
+    "@babel/preset-env": "7.5.5",
+    "babel-jest": "24.9.0",
+    "jest": "24.9.0",
+    "microbundle": "0.11.0",
+    "react": "16.9.0",
+    "standard": "14.0.2",
+    "styled-components": "4.3.2"
   },
   "standard": {
     "ignore": [
