@@ -5,16 +5,14 @@
   "version": "1.0.0",
   "source": "src/index.js",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "unpkg": "dist/index.umd.js",
   "scripts": {
     "test": "jest",
     "lint": "standard --fix",
-    "build": "microbundle",
+    "build": "microbundle --format cjs",
     "dev": "microbundle watch"
   },
   "peerDependencies": {
-    "styled-components": "^4.3.2"
+    "styled-components": "^4"
   },
   "devDependencies": {
     "@babel/core": "7.6.2",
