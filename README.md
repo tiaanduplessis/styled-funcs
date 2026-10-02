@@ -90,7 +90,7 @@ ReactDOM.render(<App />, rootElement);
 
 ## Install
 
-This project uses [node](https://nodejs.org) and [npm](https://www.npmjs.com). 
+This project uses [node](https://nodejs.org) and [npm](https://www.npmjs.com).
 
 ```sh
 $ npm install styled-funcs
@@ -107,5 +107,49 @@ $ yarn add styled-funcs
 
 ## License
 
-MIT 
-    
+MIT
+
+## Development
+
+Use Node 22.23.3 or Node 24.19.0 and Yarn Classic 1.22.22. These are
+maintainer-tool requirements; the package's runtime and peer requirements have
+not changed. `yarn.lock` is the only maintained lockfile.
+
+```sh
+yarn install --frozen-lockfile --ignore-scripts
+yarn run check
+yarn dev # rebuild the CommonJS distribution when source changes
+```
+
+`yarn run check` runs non-mutating ESLint, builds, tests the unmodified source, checks
+the distribution's ES5 syntax/source map/external peer, and repeats the behavior
+tests against `dist/index.js`. The builder keeps styled-components external and
+emits the same CommonJS filename and source-map filename. No install, publish,
+version, or release lifecycle command is added. Build explicitly before packing:
+
+```sh
+yarn build
+npm pack --ignore-scripts
+```
+
+### Characterized existing behavior
+
+The dependency refresh deliberately preserves these existing edge cases:
+
+- `by` uses its fallback for every falsy result; `byTheme` uses its fallback only
+  when the entire theme is falsy, not for missing keys in an existing theme
+- Missing intermediate property paths can throw; these helpers are not safe
+  general-purpose path readers
+- `map` returns the first matching **prop value**, rather than its mapping value
+- Array mappings become index-keyed objects on the first call. They are then
+  snapshots; object mappings continue to reflect later mutations
+- `isMap` matches string keys strictly, and skips falsy selector values
+- `is` requires exactly `true`; `withProp` omits falsy prop values
+- Existing source and transpiled CJS function arities differ because of default
+  parameter lowering. Tests preserve both forms. The old CJS also assigns a
+  dynamic `__proto__` key differently from the source's computed own property;
+  the builder retains that difference. Do not pass untrusted keys to these
+  helpers or interpret this characterization as a security hardening change
+
+Tests include styled-components 4 CSS interpolation and React 16 server rendering.
+The tooling refresh does not migrate the `styled-components: ^4` peer contract.

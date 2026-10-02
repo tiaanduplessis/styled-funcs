@@ -6,31 +6,29 @@
   "source": "src/index.js",
   "main": "dist/index.js",
   "scripts": {
-    "test": "jest",
-    "lint": "standard --fix",
-    "build": "microbundle --format cjs",
-    "dev": "microbundle watch"
+    "test": "node --test src/__tests__/*.test.js test/*.test.js",
+    "lint": "eslint src scripts test eslint.config.mjs",
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs --watch",
+    "check": "npm run lint && npm run build && npm test && npm run test:dist",
+    "test:dist": "node scripts/test-dist.cjs"
   },
   "peerDependencies": {
     "styled-components": "^4"
   },
   "devDependencies": {
-    "@babel/core": "7.6.4",
-    "@babel/preset-env": "7.6.3",
-    "babel-jest": "24.9.0",
-    "jest": "24.9.0",
-    "microbundle": "0.11.0",
-    "react": "16.11.0",
-    "standard": "14.3.1",
-    "styled-components": "4.4.1"
+    "@babel/core": "7.29.7",
+    "@babel/preset-env": "7.29.7",
+    "@eslint/js": "10.0.1",
+    "@rollup/plugin-babel": "7.1.0",
+    "@stylistic/eslint-plugin": "5.10.0",
+    "eslint": "10.11.0",
+    "rollup": "4.63.5",
+    "terser": "5.51.2",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "styled-components": "4.4.1",
+    "acorn": "8.17.0"
   },
-  "standard": {
-    "ignore": [
-      "dist",
-      "example.js"
-    ],
-    "env": {
-      "jest": true
-    }
-  }
+  "packageManager": "yarn@1.22.22"
 }
